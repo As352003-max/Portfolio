@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&display=swap");
 
 :root {
-  --bgOrange: #e84949;
+  --bgOrange: #222020;
   --linkedin: #0077b5;
   --github: #333;
   --leetcode: #f89f1e;
@@ -74,7 +74,7 @@ body {
 .hero-section {
   padding: 6rem 2rem;
   text-align: left;
-  background: linear-gradient(135deg, #cdeaf2fb, #c3e4ebee);
+  background: linear-gradient(135deg, #92ddf2fb, #04c7eeee);
   color: white;
 }
 
