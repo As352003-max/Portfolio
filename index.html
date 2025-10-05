@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- NEW: Three.js library for 3D content -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -37,11 +39,9 @@
                     <div class="btn-pink"><a href="#contactme">Hire Me</a></div>
                 </div>
 
+                <!-- UPDATED: Placeholder replaced with a Three.js canvas -->
                 <div class="hero-section-right" data-aos="fade-left" data-aos-delay="500">
-                    <div id="three-d-placeholder">
-                        <p>🚀 3D Interactive Model Placeholder 💻</p>
-                        <p style="font-size: 0.9rem; font-weight: 400;">(Add your Spline or Three.js embed code here)</p>
-                    </div>
+                    <canvas id="heroCanvas"></canvas>
                 </div>
             </div>
         </section>
@@ -184,10 +184,10 @@
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Initialize AOS
+        // --- AOS Initialization ---
         AOS.init({ duration: 1000, offset: 100, once: true });
         
-        // Initialize ScrollReveal
+        // --- ScrollReveal Initialization ---
         const sr = ScrollReveal({
             distance: '60px',
             duration: 1200,
@@ -195,7 +195,6 @@
             reset: false,
         });
 
-        // Apply ScrollReveal effects to specific elements
         sr.reveal('.navbar', { 
             origin: 'top', 
             delay: 50 
@@ -213,6 +212,80 @@
             origin: 'right'
         });
 
+        // --- THREE.js Interactive Cube Setup ---
+        let scene, camera, renderer, cube;
+        const canvas = document.getElementById('heroCanvas');
+        const container = document.querySelector('.hero-section-right');
+
+        function initThreeJs() {
+            // Get current container dimensions
+            const containerWidth = container.clientWidth;
+            const containerHeight = container.clientHeight;
+
+            // Scene
+            scene = new THREE.Scene();
+            
+            // Camera
+            camera = new THREE.PerspectiveCamera(75, containerWidth / containerHeight, 0.1, 1000);
+            camera.position.z = 2;
+
+            // Renderer
+            renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+            renderer.setSize(containerWidth, containerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            
+            // Cube Geometry and Material
+            const geometry = new THREE.BoxGeometry(1, 1, 1);
+            // Using MeshPhongMaterial for a shiny look and lighting interaction
+            const material = new THREE.MeshPhongMaterial({ 
+                color: 0xffffff, 
+                specular: 0x555555, 
+                shininess: 30 
+            }); 
+            cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0x404040, 3); // Soft white light, stronger intensity
+            scene.add(ambientLight);
+            
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+            directionalLight.position.set(1, 1, 1).normalize();
+            scene.add(directionalLight);
+
+            // Start animation loop
+            animate();
+        }
+
+        function onWindowResize() {
+            if (!camera || !renderer) return;
+
+            const containerWidth = container.clientWidth;
+            const containerHeight = container.clientHeight;
+
+            camera.aspect = containerWidth / containerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(containerWidth, containerHeight);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            if (cube) {
+                // Subtle, continuous rotation
+                cube.rotation.x += 0.005;
+                cube.rotation.y += 0.008;
+            }
+
+            renderer.render(scene, camera);
+        }
+
+        // Initialize Three.js once the window and container are ready
+        window.onload = function () {
+            initThreeJs();
+            // Also attach the resize listener here
+            window.addEventListener('resize', onWindowResize);
+        }
     </script>
 </body>
 </html>
