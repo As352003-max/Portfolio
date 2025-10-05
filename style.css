@@ -2,7 +2,6 @@
 
 :root {
   --bgOrange: #e84949;
-  /* New colors for interactive buttons */
   --linkedin: #0077b5;
   --github: #333;
   --leetcode: #f89f1e;
@@ -13,7 +12,7 @@
   padding: 0;
   font-family: "Be Vietnam Pro", sans-serif;
   scroll-behavior: smooth;
-  box-sizing: border-box; /* Added for better layout handling */
+  box-sizing: border-box;
 }
 
 body {
@@ -37,12 +36,12 @@ body {
 }
 
 .logo-container {
-  display: flex; /* Ensure logo and text are side-by-side */
+  display: flex;
   align-items: center;
 }
 
 .logo {
-  width: 50px; /* Slightly reduced size for better alignment */
+  width: 50px;
   border-radius: 50%;
 }
 
@@ -70,39 +69,73 @@ body {
 }
 
 /* ------------------------------------------- */
-/* 2. Hero Section */
+/* 2. Hero Section - MODIFIED FOR 3D LAYOUT */
 /* ------------------------------------------- */
 .hero-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 6rem 2rem;
-  text-align: center;
+  text-align: left;
   background: linear-gradient(135deg, #f3a2b0a4, #ff7eb3);
   color: white;
 }
 
+.hero-content-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 4rem;
+}
+
+.hero-section-left {
+  flex: 1;
+  min-width: 300px;
+  max-width: 550px;
+}
+
+.hero-section-right {
+  flex: 1;
+  height: 400px;
+  min-width: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
 .hero-heading {
   font-size: 3rem;
-  font-weight: 800; /* Increased font weight */
+  font-weight: 800;
+  text-align: left;
 }
 
 .highlight {
-  color: #333; /* Highlight Amitanshu name */
+  color: #333;
 }
 
 .hero-sub-heading {
   font-size: 2rem;
   margin-top: 1rem;
+  text-align: left;
 }
 
 .hero-description {
-  margin-top: 1.5rem; /* Increased margin */
+  margin-top: 1.5rem;
   font-size: 1.2rem;
   font-weight: 400;
-  max-width: 600px; /* Added max-width for readability */
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 600px;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
+}
+
+.btn-pink {
+  text-align: left;
 }
 
 .btn-pink a {
@@ -134,38 +167,38 @@ body {
 
 .page-header {
   font-size: 2.5rem;
-  font-weight: 800; /* Increased font weight */
+  font-weight: 800;
   color: var(--bgOrange);
-  margin-bottom: 3rem; /* Increased margin */
+  margin-bottom: 3rem;
 }
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Increased min size */
-  gap: 2.5rem; /* Increased gap */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
   max-width: 1200px;
   margin: 0 auto;
+  perspective: 1000px;
 }
 
 /* ------------------------------------------- */
-/* 4. Cards (Project, Skill, Edu, etc.) */
+/* 4. Cards (Project, Skill, Edu, etc.) - MODIFIED FOR CSS 3D */
 /* ------------------------------------------- */
 .card {
-  padding: 2.5rem; /* Increased padding */
+  padding: 2.5rem;
   border-radius: 16px;
   color: #fff;
   font-size: 1.2rem;
-  font-weight: 600; /* Adjusted font weight */
+  font-weight: 600;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.27), box-shadow 0.3s ease; /* More lively transition */
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.27), box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-10px) scale(1.02);
+  transform: translateY(-10px) scale(1.02) rotateX(2deg) rotateY(-2deg);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Gradient colors for each section */
 .project-card {
   background: linear-gradient(135deg, #8023bdb6, #875bb319);
   text-align: left;
@@ -183,7 +216,7 @@ body {
 
 
 .card h3 {
-  font-size: 1.8rem; /* Increased size */
+  font-size: 1.8rem;
   margin-bottom: 1rem;
 }
 
@@ -199,7 +232,6 @@ body {
   margin: 1rem 0 1rem 1rem;
 }
 
-/* Buttons inside cards */
 .btn-small {
   display: inline-block;
   margin-top: 1.5rem;
@@ -218,10 +250,10 @@ body {
 }
 
 /* ------------------------------------------- */
-/* 5. Interactive Contact Section (NEW) */
+/* 5. Interactive Contact Section */
 /* ------------------------------------------- */
 .contactus-container {
-  background: linear-gradient(180deg, #e0e0e0, #f8f8f8); /* Light background for contrast */
+  background: linear-gradient(180deg, #e0e0e0, #f8f8f8);
 }
 
 .contactus-sub-container {
@@ -361,7 +393,6 @@ body {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Specific Social Button Colors */
 .linkedin-btn { background-color: var(--linkedin); }
 .github-btn { background-color: var(--github); }
 .leetcode-btn { background-color: var(--leetcode); }
@@ -371,6 +402,27 @@ body {
 /* 6. Media Queries for Responsiveness */
 /* ------------------------------------------- */
 @media (max-width: 1024px) {
+  
+  .hero-content-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-section-left {
+    max-width: 100%;
+  }
+  .hero-section-right {
+    width: 90%;
+    height: 300px;
+    order: -1;
+  }
+  .hero-heading, .hero-sub-heading, .hero-description, .btn-pink {
+    text-align: center;
+  }
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
   .contactus-sub-container {
     flex-direction: column;
     align-items: center;

@@ -6,9 +6,7 @@
     <title>Portfolio Website - Amitanshu</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;500;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="style.css">
-
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
@@ -28,14 +26,23 @@
         </div>
 
         <section class="hero-section">
-            <div class="hero-section-left" data-aos="fade-right">
-                <h1 class="hero-heading">Hi! I'm <span class="highlight">Amitanshu</span></h1>
-                <h2 class="hero-sub-heading">I am a <span id="typed-role"></span></h2>
-                <p class="hero-description">
-                    Passionate <strong>Full-Stack Developer</strong> experienced in building scalable applications.
-                    Currently pursuing <strong>B.Tech IT (CGPA: 7.96/10)</strong>.
-                </p>
-                <div class="btn-pink"><a href="#contactme">Hire Me</a></div>
+            <div class="hero-content-container">
+                <div class="hero-section-left" data-aos="fade-right">
+                    <h1 class="hero-heading">Hi! I'm <span class="highlight">Amitanshu</span></h1>
+                    <h2 class="hero-sub-heading">I am a <span id="typed-role"></span></h2>
+                    <p class="hero-description">
+                        Passionate <strong>Full-Stack Developer</strong> experienced in building scalable applications.
+                        Currently pursuing <strong>B.Tech IT (CGPA: 7.96/10)</strong>.
+                    </p>
+                    <div class="btn-pink"><a href="#contactme">Hire Me</a></div>
+                </div>
+
+                <div class="hero-section-right" data-aos="fade-left" data-aos-delay="500">
+                    <div id="three-d-placeholder">
+                        <p>🚀 3D Interactive Model Placeholder 💻</p>
+                        <p style="font-size: 0.9rem; font-weight: 400;">(Add your Spline or Three.js embed code here)</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -79,10 +86,10 @@
         <section id="skills" class="section">
             <h2 class="page-header" data-aos="fade-up">Skills</h2>
             <div class="card-grid">
-                <div class="card skill-card" data-aos="fade-up" data-aos-delay="100">💻 <strong>Languages</strong><br><p>Java, C, JavaScript, HTML, CSS, SQL</p></div>
-                <div class="card skill-card" data-aos="fade-up" data-aos-delay="200">⚡ <strong>Frameworks</strong><br><p>React.js, Redux, Next.js, Node.js, Spring Boot</p></div>
-                <div class="card skill-card" data-aos="fade-up" data-aos-delay="300">🗄️ <strong>Databases</strong><br><p>MongoDB, Mongoose</p></div>
-                <div class="card skill-card" data-aos="fade-up" data-aos-delay="400">🛠 <strong>Tools</strong><br><p>GitHub, Git, Docker, Firebase, Postman</p></div>
+                <div class="card skill-card">💻 <strong>Languages</strong><br><p>Java, C, JavaScript, HTML, CSS, SQL</p></div>
+                <div class="card skill-card">⚡ <strong>Frameworks</strong><br><p>React.js, Redux, Next.js, Node.js, Spring Boot</p></div>
+                <div class="card skill-card">🗄️ <strong>Databases</strong><br><p>MongoDB, Mongoose</p></div>
+                <div class="card skill-card">🛠 <strong>Tools</strong><br><p>GitHub, Git, Docker, Firebase, Postman</p></div>
             </div>
         </section>
 
@@ -113,7 +120,7 @@
 
             <div class="contactus-sub-container">
 
-                <div class="contactus-left" data-aos="fade-right" data-aos-delay="100">
+                <div class="contactus-left">
                     <p class="contactus-heading">
                         Ready to collaborate or just want to say hi? I'm always open to new opportunities!
                     </p>
@@ -131,7 +138,7 @@
                     </form>
                 </div>
 
-                <div class="contactus-right" data-aos="fade-left" data-aos-delay="200">
+                <div class="contactus-right">
                     <h3 class="contact-details-heading">Connect with me instantly:</h3>
 
                     <div class="contact-info-block">
@@ -173,7 +180,39 @@
 
     <script src="https://kit.fontawesome.com/58a810656e.js" crossorigin="anonymous"></script>
 
+    <script src="https://unpkg.com/scrollreveal"></script>
+
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1000, offset: 100, once: true });</script>
+    <script>
+        // Initialize AOS
+        AOS.init({ duration: 1000, offset: 100, once: true });
+        
+        // Initialize ScrollReveal
+        const sr = ScrollReveal({
+            distance: '60px',
+            duration: 1200,
+            delay: 100,
+            reset: false,
+        });
+
+        // Apply ScrollReveal effects to specific elements
+        sr.reveal('.navbar', { 
+            origin: 'top', 
+            delay: 50 
+        });
+
+        sr.reveal('.skill-card', { 
+            interval: 100, 
+            origin: 'bottom' 
+        });
+
+        sr.reveal('.contactus-left', { 
+            origin: 'left'
+        });
+        sr.reveal('.contactus-right', { 
+            origin: 'right'
+        });
+
+    </script>
 </body>
 </html>
